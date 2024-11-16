@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  exponent:
+    build: .
+    volumes:
+      - ${VOLUME_PATH:-./default-directory}:/app
+      - ~/.config/exponent/config.json:/root/.config/exponent/config.json:ro
+    command: sh -c "cd /app && echo 'Y' | exponent run"
