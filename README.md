@@ -2,6 +2,8 @@ Afraid of AI takeover on your machine?
 
 This repository contains a Docker setup for running [Exponent](https://docs.expo.dev/versions/latest/introduction/installation/) in a containerized environment.
 
+Note: this is not Exponent's official Docker setup.
+
 ## Prerequisites
 
 - Docker
