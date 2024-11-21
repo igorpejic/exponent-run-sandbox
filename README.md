@@ -16,8 +16,12 @@ Note: this is not Exponent's official Docker setup.
 1. Make sure you have a valid Exponent configuration file at `~/.config/exponent/config.json` on your host machine.
 You can obtain it by running `exponent login` in your terminal.
 
-2. Set the `VOLUME_PATH` environment variable to specify the directory you want to mount in the container:
+2. (Optional) Set your user and group IDs if they differ from the default 1000 such that new files created in the container are owned by your user:
+   ```bash
+   UID=$UID GID=$GID VOLUME_PATH=/path/to/your/directory docker compose up --build
+   ```
 
+3. Set the `VOLUME_PATH` environment variable to specify the directory you want to mount in the container:
    ```bash
    VOLUME_PATH=/path/to/your/directory docker compose up --build
    ```
@@ -46,7 +50,7 @@ docker compose down
 The Docker Compose setup includes two volume mounts:
 
 - Your working directory (specified by `VOLUME_PATH`) is mounted to `/app` in the container
-- Your Exponent config file is mounted read-only from `~/.config/exponent/config.json`
+- Your Exponent config file is mounted read-only from `~/.config/exponent/config.json` to `/home/ubuntu/.config/exponent/config.json`
 
 ## Notes
 
