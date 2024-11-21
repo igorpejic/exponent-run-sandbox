@@ -2,8 +2,13 @@ version: '3.8'
 
 services:
   exponent:
-    build: .
+    build:
+      context: .
+      args:
+        USER_ID: ${UID:-1000}
+        GROUP_ID: ${GID:-1000}
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ${VOLUME_PATH:-./default-directory}:/app
-      - ~/.config/exponent/config.json:/root/.config/exponent/config.json:ro
+      - ~/.config/exponent/config.json:/home/ubuntu/.config/exponent/config.json:ro
     command: sh -c "cd /app && echo 'Y' | exponent run"
